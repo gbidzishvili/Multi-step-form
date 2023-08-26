@@ -7,6 +7,7 @@ import { PersonalInfoComponent } from './features/step-1/components/personal-inf
 import { StepsComponent } from './shared/components/steps/steps.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SelectPlanComponent } from './features/step-2/components/select-plan/select-plan.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PersonalInfoComponent,
     StepsComponent,
     LayoutComponent,
+    SelectPlanComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
