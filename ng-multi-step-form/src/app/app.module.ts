@@ -9,6 +9,7 @@ import { LayoutComponent } from './shared/components/layout/layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectPlanComponent } from './features/step-2/components/select-plan/select-plan.component';
 import { ToggleComponent } from './features/step-2/components/toggle/toggle.component';
+import { AddOnsComponent } from './features/step-3/components/add-ons/add-ons.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ToggleComponent } from './features/step-2/components/toggle/toggle.comp
     LayoutComponent,
     SelectPlanComponent,
     ToggleComponent,
+    AddOnsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

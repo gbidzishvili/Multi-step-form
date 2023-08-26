@@ -4,37 +4,62 @@
     You have the option of montly or yearly billing.
   </div>
   <div class="subscriptions">
-    <div class="subscription">
+    <div
+      class="subscription"
+      (click)="chooseSubscription(0)"
+      [ngClass]="{subscriptionChoosen:subscriptionChoosen===0}"
+    >
       <img
         src="../../../../../assets/images/icon-arcade.svg"
         alt="arcade-icon"
       />
-      <div class="subscription-data">
-        <div class="subscription-data-name">Arcade</div>
-        <div class="subscription-data-price">$9/mo</div>
+      <div class="subscription-data-cont">
+        <div class="subscription-data">
+          <div class="subscription-data-name">Arcade</div>
+          <div class="subscription-data-price">$9/mo</div>
+        </div>
+        <div class="trial" *ngIf="clicked">2 months free</div>
       </div>
     </div>
-    <div class="subscription">
+    <div class="subscription" (click)="chooseSubscription(1)" [ngClass]="{subscriptionChoosen:subscriptionChoosen===1}">
       <img
         src="../../../../../assets/images/icon-advanced.svg"
         alt="advanced-icon"
       />
-      <div class="subscription-data">
-        <div class="subscription-data-name">Advanced</div>
-        <div class="subscription-data-price">$12/mo</div>
+      <div class="subscription-data-cont">
+        <div class="subscription-data">
+          <div class="subscription-data-name">Advanced</div>
+          <div class="subscription-data-price">$12/mo</div>
+        </div>
+        <div class="trial" *ngIf="clicked">2 months free</div>
       </div>
     </div>
-    <div class="subscription">
+    <div
+      class="subscription"
+      (click)="chooseSubscription(2)"
+      [ngClass]="{subscriptionChoosen:subscriptionChoosen===2}"
+    >
       <img src="../../../../../assets/images/icon-pro.svg" alt="pro-icon" />
-      <div class="subscription-data">
-        <div class="subscription-data-name">Pro</div>
-        <div class="subscription-data-price">$15/mo</div>
+      <div class="subscription-data-cont">
+        <div class="subscription-data">
+          <div class="subscription-data-name">Pro</div>
+          <div class="subscription-data-price">$15/mo</div>
+        </div>
+        <div class="trial" *ngIf="clicked">2 months free</div>
       </div>
     </div>
     <div class="billing">
-      <span>Monthly</span>
-      <span>toggle</span>
-      <span>Yearly</span>
+      <span [ngClass]="{ 'blue-marine': !clicked, 'color-gray': clicked }"
+        >Monthly</span
+      >
+      <app-toggle (toggleEmitter)="changeToggle($event)"></app-toggle>
+      <span [ngClass]="{ 'blue-marine': clicked, 'color-gray': !clicked }"
+        >Yearly</span
+      >
     </div>
+  </div>
+  <div class="footer">
+    <button type="button" class="back" (click)="back()">Go Back</button>
+    <button type="button" class="next" (click)="next()">Next Step</button>
   </div>
 </div>

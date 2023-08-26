@@ -1,7 +1,7 @@
 <div class="buttons">
     <button
         *ngFor="let i of pages"
-        [ngClass]="{ active: currentPage == i }"
+        [ngClass]="{ active: currentPage === i }"
         (click)="changePage(i)"
     >
         <span> {{ i }}</span>

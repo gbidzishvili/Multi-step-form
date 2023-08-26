@@ -12,6 +12,7 @@ export class PaginationService {
     this.router.navigate([`step-${page}`]);
     localStorage.setItem('currentPage', `${page}`);
     let currPage = +localStorage.getItem('currentPage');
-    this.currentPage.next(currPage)
+    console.log('currPage', currPage);
+    this.currentPage.next(currPage);
   }
 }

@@ -15,9 +15,9 @@
         color: $white;
         border: 0.1rem solid $white;
         cursor: pointer;
+        &.active {
+            background-color: $magnolia;
+            color: $blue-marine;
+        }
     }
-}
-.active {
-    background-color: $magnolia;
-    color: $blue-marine;
 }
