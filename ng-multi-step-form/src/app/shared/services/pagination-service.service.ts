@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class PaginationServiceService {
+export class PaginationService {
   currentPage = new BehaviorSubject(1);
   constructor() {}
   paginate(page: number) {
