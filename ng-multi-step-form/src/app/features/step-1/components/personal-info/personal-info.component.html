@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="title">Personal info</div>
+    <div class="title-small">
+        Please provide your name, emailaddress, and phone number.
+    </div>
+
+    <form [formGroup]="infoForm" (ngSubmit)="onSubmit()">
+        <div class="input-cont">
+            <div class="label-cont">
+                <label for="name">Name</label>
+            </div>
+            <input
+                #nameInput
+                (focus)="onFocus(nameInput)"
+                formControlName="name"
+                type="text"
+                id="name"
+                placeholder="e.g. Stephen King"
+            />
+            <span class="error" *ngIf="invalidName">
+                <img
+                    class="error-image"
+                    src="../../assets/images/error.svg"
+                    alt="error-icon"
+                />{{
+                    nameInput.value === ''
+                        ? 'This fiel is required'
+                        : 'Ivalid name. Enter only letters!'
+                }}</span
+            >
+        </div>
+        <div class="input-cont">
+            <div class="label-cont">
+                <label for="email">Email Address</label>
+            </div>
+            <input
+                #emailInput
+                (focus)="onFocus(emailInput)"
+                formControlName="email"
+                type="text"
+                id="email"
+                placeholder="e.g. stephenking@lorem.com"
+            />
+            <span class="error" *ngIf="invalidEmail"
+                ><img
+                    class="error-image"
+                    src="../../assets/images/error.svg"
+                    alt="error-icon"
+                />{{
+                    emailInput.value === ''
+                        ? 'This fiel is required'
+                        : 'ivalid email.Enter valid email'
+                }}</span
+            >
+        </div>
+        <div class="input-cont">
+            <div class="label-cont">
+                <label for="number">Phone Number</label>
+            </div>
+            <input
+                #numberInput
+                (focus)="onFocus(numberInput)"
+                formControlName="number"
+                type="text"
+                id="number"
+                placeholder="e.g. *** ** ** **"
+            />
+            <span class="error" *ngIf="invalidNumber"
+                ><img
+                    class="error-image"
+                    src="../../assets/images/error.svg"
+                    alt="error-icon"
+                />{{
+                    numberInput.value === ''
+                        ? 'This fiel is required'
+                        : 'ivalidNumber.Please enter a number with a total length of 9 characters.'
+                }}</span
+            >
+        </div>
+        <div class="footer">
+            <button type="submit" class="next">Next Step</button>
+        </div>
+    </form>
+</div>
+<!-- e.g. Stephen King
+  e.g. stephenking@lorem.com
+  e.g. +1 234 567 890 -->
+
+<!-- Next Step -->

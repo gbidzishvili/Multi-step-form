@@ -1,0 +1,85 @@
+@use "../../../../shared/styles/shared.scss" as *;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 90%;
+  background: $white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.18);
+  position: relative;
+  z-index: 1;
+  .title {
+    color: $blue-marine;
+    font-size: 2.4rem;
+    font-weight: 700;
+    &-small {
+      font-size: 1.4rem;
+      color: $gray-cool;
+      margin-bottom: 1rem;
+    }
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    .input-cont {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      margin-bottom: 2rem;
+      gap: 0.5rem;
+      .label-cont {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-weight: 500;
+        font-size: 1.2rem;
+        label {
+          color: $blue-marine;
+        }
+      }
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 0.1rem solid $gray-cool;
+        border-radius: 0.3rem;
+      }
+      input {
+        &:focus {
+          outline: none;
+          &::placeholder {
+            opacity: 0;
+          }
+        }
+      }
+    }
+    .error {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: $red;
+      &-image {
+        width: 1.7rem;
+      }
+    }
+    .footer {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      .next {
+        background-color: $blue-marine;
+        color: $white;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 1rem;
+      }
+    }
+  }
+}

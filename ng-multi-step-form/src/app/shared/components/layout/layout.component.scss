@@ -1,0 +1,16 @@
+@use '../../styles/shared.scss' as *;
+.container {
+    width: 375px;
+    margin: 0 auto;
+    position: relative;
+    height: 100vh;
+    background-color: $magnolia;
+}
+.background {
+    background: url(../../../../assets/images/bg-sidebar-mobile.svg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+}

@@ -1,0 +1,22 @@
+@use '../../styles/shared.scss' as *;
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 15vh;
+    position: relative;
+    z-index: 1;
+}
+button {
+    width: 2rem;
+    height: 2rem;
+    background: none;
+    border-radius: 50%;
+    color: $white;
+    border: 0.1rem solid $white;
+}
+.active {
+    background-color: $magnolia;
+    color: $blue-marine;
+}
