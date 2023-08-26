@@ -9,20 +9,20 @@ import { Router } from '@angular/router';
 })
 export class StepsComponent {
     pages = [1, 2, 3, 4];
-    currentPage = 1;
+
+    currentPage = +localStorage.getItem('currentPage');
     constructor(
         public paginationService: PaginationService,
         public router: Router
-    ) {
+    ) {}
+    ngOnInit() {
         this.paginationService.currentPage.subscribe((v) => {
             this.currentPage = v;
         });
     }
-    ngOnInit() {}
     changePage(page: number) {
         if (page !== this.currentPage) {
-            this.currentPage = page;
-            this.router.navigate([`step-${page}`]);
+            this.paginationService.paginate(page);
         }
     }
 }

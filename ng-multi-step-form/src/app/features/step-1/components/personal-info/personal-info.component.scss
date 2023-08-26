@@ -1,26 +1,8 @@
 @use "../../../../shared/styles/shared.scss" as *;
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 0 auto;
-  padding: 1rem;
-  width: 90%;
-  background: $white;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.18);
-  position: relative;
-  z-index: 1;
+  @include container;
   .title {
-    color: $blue-marine;
-    font-size: 2.4rem;
-    font-weight: 700;
-    &-small {
-      font-size: 1.4rem;
-      color: $gray-cool;
-      margin-bottom: 1rem;
-    }
+    @include title;
   }
   form {
     display: flex;

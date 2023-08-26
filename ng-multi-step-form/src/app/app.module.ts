@@ -8,6 +8,7 @@ import { StepsComponent } from './shared/components/steps/steps.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectPlanComponent } from './features/step-2/components/select-plan/select-plan.component';
+import { ToggleComponent } from './features/step-2/components/toggle/toggle.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SelectPlanComponent } from './features/step-2/components/select-plan/se
     StepsComponent,
     LayoutComponent,
     SelectPlanComponent,
+    ToggleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

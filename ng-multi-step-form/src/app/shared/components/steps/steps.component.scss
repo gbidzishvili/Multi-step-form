@@ -7,14 +7,15 @@
     height: 15vh;
     position: relative;
     z-index: 1;
-}
-button {
-    width: 2rem;
-    height: 2rem;
-    background: none;
-    border-radius: 50%;
-    color: $white;
-    border: 0.1rem solid $white;
+    button {
+        width: 2rem;
+        height: 2rem;
+        background: none;
+        border-radius: 50%;
+        color: $white;
+        border: 0.1rem solid $white;
+        cursor: pointer;
+    }
 }
 .active {
     background-color: $magnolia;

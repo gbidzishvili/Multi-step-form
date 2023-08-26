@@ -14,6 +14,7 @@ export class PersonalInfoComponent {
   invalidEmail = false;
   invalidNumber = false;
   submitted = new Subject();
+  currentPage;
   infoForm = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -47,6 +48,9 @@ export class PersonalInfoComponent {
         });
       }
     });
+    this.paginationService.currentPage.subscribe((v) => {
+      this.currentPage = v;
+    });
   }
 
   onSubmit() {
@@ -55,8 +59,6 @@ export class PersonalInfoComponent {
     this.invalidNumber = this.infoForm.get('number').invalid;
     this.submitted.next(true);
     console.log(this.infoForm.valid);
-    // if (this.infoForm.valid) {
-    this.router.navigate(['/step-2']);
     this.paginationService.paginate(2);
 
     // }
