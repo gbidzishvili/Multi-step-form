@@ -1,0 +1,20 @@
+[
+  {
+    "imagePath": "../../../../../assets/images/icon-arcade.svg",
+    "header": "Arcade",
+    "price": "+$90/mo",
+    "trial": "2 months free"
+  },
+  {
+    "imagePath": "../../../../../assets/images/icon-advanced.svg",
+    "header": "Advanced",
+    "price": "+$120/mo",
+    "trial": "2 months free"
+  },
+  {
+    "imagePath": "../../../../../assets/images/icon-pro.svg",
+    "header": "Pro",
+    "price": "+$150/mo",
+    "trial": "2 months free"
+  }
+]

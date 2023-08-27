@@ -10,19 +10,26 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SelectPlanComponent } from './features/step-2/components/select-plan/select-plan.component';
 import { ToggleComponent } from './features/step-2/components/toggle/toggle.component';
 import { AddOnsComponent } from './features/step-3/components/add-ons/add-ons.component';
-
+import { FinishingComponent } from './features/step-4/components/finishing/finishing.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  declarations: [
-    AppComponent,
-    PersonalInfoComponent,
-    StepsComponent,
-    LayoutComponent,
-    SelectPlanComponent,
-    ToggleComponent,
-    AddOnsComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        PersonalInfoComponent,
+        StepsComponent,
+        LayoutComponent,
+        SelectPlanComponent,
+        ToggleComponent,
+        AddOnsComponent,
+        FinishingComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

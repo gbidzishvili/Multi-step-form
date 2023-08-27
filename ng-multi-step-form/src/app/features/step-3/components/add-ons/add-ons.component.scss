@@ -1,0 +1,102 @@
+@use '../../../../shared/styles/shared.scss' as *;
+.container {
+    @include container;
+    .title {
+        @include title;
+    }
+    .addOnns {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        .flex-outer-container {
+            display: flex;
+            justify-content: space-between;
+            min-width: 130px;
+            grid-template-columns: repeat(3, 1fr);
+            .addOnn {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+                border: 0.1rem solid lightgray;
+                border-radius: 0.5rem;
+                padding: 1rem;
+                transition: max-height 0.3s ease-in-out;
+                width: 100%;
+                .flex-inner-container {
+                    display: flex;
+                    gap: 1rem;
+                }
+                &-data-cont {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 0.5rem;
+                }
+                &-data {
+                    &-name {
+                        color: $blue-marine;
+                        font-size: 1.5rem;
+                        font-weight: 500;
+                        letter-spacing: -0.5px;
+                    }
+                    &-price {
+                        color: $gray-cool;
+                    }
+                }
+                .trial {
+                    color: $blue-marine;
+                    font-weight: 500;
+                }
+            }
+        }
+        .addOnnChoosen {
+            background-color: $bg-gray;
+            display: grid;
+            // width: 30%;
+            // grid-template-columns: 1fr 1fr;
+            // grid-template-rows: 1fr 1fr;
+            border: 1px solid $red;
+        }
+        .billing {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: $bg-gray;
+            border-radius: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            .color-marine {
+                color: $blue-marine;
+            }
+            .color-gray {
+                color: $gray-cool;
+            }
+        }
+    }
+    .footer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 1rem 1rem 1rem;
+        .back {
+            color: $gray-cool;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        .next {
+            background-color: $blue-marine;
+            color: $white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            cursor: pointer;
+        }
+    }
+}
+

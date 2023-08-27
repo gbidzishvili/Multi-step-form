@@ -1,1 +1,43 @@
-<p>add-ons works!</p>
+<div class="container">
+    <div class="title">Pick add-ons</div>
+    <div class="title-small">Add-ons help enhance your gaming experience.</div>
+    <div class="addOnns">
+        <div
+            class="flex-outer-container"
+            *ngFor="let item of data; let i = index"
+        >
+            <div
+                class="addOnn"
+                (click)="chooseAddOnn(i)"
+                [ngClass]="{ addOnnChoosen: addOnnChoosenArr[i] }"
+            >
+                <div class="flex-inner-container">
+                    <input [checked]="addOnnChoosenArr[i]" type="checkbox" />
+                    <div class="addOnn-data-cont">
+                        <div class="addOnn-data">
+                            <div class="addOnn-data-name">
+                                {{ item.header }}
+                            </div>
+                            <div class="addOnn-data-price">
+                                {{ item.subheader }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="trial">
+                    {{
+                        toggleValue === false
+                            ? item.price
+                            : item.priceYearly
+                    }}
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <button type="button" class="back" (click)="back()">Go Back</button>
+            <button type="button" class="next" (click)="next()">
+                Next Step
+            </button>
+        </div>
+    </div>
+</div>
