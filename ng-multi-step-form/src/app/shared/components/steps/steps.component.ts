@@ -20,8 +20,6 @@ export class StepsComponent {
         this.paginationService.currentPage.subscribe((v) => {
             this.currentPage = v;
             console.log('curr page', this.currentPage);
-
-            console.log('route', v, this.route.snapshot);
         });
     }
     changePage(page: number) {

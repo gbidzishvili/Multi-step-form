@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PaginationService } from 'src/app/shared/services/pagination-service.service';
 
 @Component({
@@ -9,11 +9,19 @@ import { PaginationService } from 'src/app/shared/services/pagination-service.se
 })
 export class SelectPlanComponent {
     clicked = false;
-    subscriptionChoosen = null;
+    subscriptionChoosen = sessionStorage.getItem('subscription');
     constructor(
         public router: Router,
-        public paginationService: PaginationService
+        public paginationService: PaginationService,
+        public route: ActivatedRoute
     ) {}
+
+    ngOnInit() {
+        // const component = this;
+        // window.addEventListener('beforeunload', function (event) {
+        //     component.subscriptionChoosen = null;
+        // });
+    }
     changeToggle(value) {
         console.log('select', value);
         this.clicked = value;
@@ -25,15 +33,15 @@ export class SelectPlanComponent {
         this.paginationService.paginate(3);
     }
     chooseSubscription(val) {
-        localStorage.setItem('subscription', `${val}`);
-        localStorage.getItem('subscription');
+        sessionStorage.setItem('subscription', `${val}`);
+        sessionStorage.getItem('subscription');
         this.subscriptionChoosen =
-            this.subscriptionChoosen === localStorage.getItem('subscription')
+            this.subscriptionChoosen === sessionStorage.getItem('subscription')
                 ? null
-                : localStorage.getItem('subscription');
+                : sessionStorage.getItem('subscription');
         console.log(
             this.subscriptionChoosen,
-            localStorage.getItem('subscription')
+            sessionStorage.getItem('subscription')
         );
     }
 }
