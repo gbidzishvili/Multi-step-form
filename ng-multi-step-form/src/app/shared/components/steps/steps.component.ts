@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PaginationService } from '../../services/pagination-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
     selector: 'app-steps',
@@ -10,20 +10,23 @@ import { Router } from '@angular/router';
 export class StepsComponent {
     pages = [1, 2, 3, 4];
 
-    currentPage = +localStorage.getItem('currentPage');
+    currentPage = 1;
     constructor(
         public paginationService: PaginationService,
-        public router: Router
+        public router: Router,
+        public route: ActivatedRoute
     ) {}
     ngOnInit() {
         this.paginationService.currentPage.subscribe((v) => {
             this.currentPage = v;
             console.log('curr page', this.currentPage);
+
+            console.log('route', v, this.route.snapshot);
         });
     }
     changePage(page: number) {
-        if (page !== this.currentPage) {
-            this.paginationService.paginate(page);
-        }
+        //     if (page !== this.currentPage) {
+        //         this.paginationService.paginate(page);
+        //     }
     }
 }

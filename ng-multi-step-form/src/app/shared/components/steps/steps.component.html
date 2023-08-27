@@ -1,8 +1,9 @@
 <div class="buttons">
     <button
         *ngFor="let i of pages"
-        [ngClass]="{ active: currentPage === i }"
         (click)="changePage(i)"
+        routerLinkActive="active"
+        [routerLink]="'step-' + i"
     >
         <span> {{ i }}</span>
     </button>

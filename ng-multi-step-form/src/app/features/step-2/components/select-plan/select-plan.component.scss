@@ -1,84 +1,88 @@
-@use "../../../../shared/styles/shared.scss" as *;
+@use '../../../../shared/styles/shared.scss' as *;
 .container {
-  @include container;
-  .title {
-    @include title;
-  }
-  .subscriptions {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-
-    .subscription {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      border: 0.1rem solid lightgray;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      transition: max-height 0.3s ease-in-out;
-      &-data-cont {
+    @include container;
+    .title {
+        @include title;
+    }
+    .subscriptions {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
-      }
-      &-data {
-        &-name {
-          color: $blue-marine;
-          font-size: 1.5rem;
-          font-weight: 500;
-          letter-spacing: -0.5px;
+        gap: 1rem;
+        width: 100%;
+
+        .subscription {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 0.1rem solid lightgray;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            transition: max-height 0.3s ease-in-out;
+            &-data-cont {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            &-data {
+                &-name {
+                    color: $blue-marine;
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                    letter-spacing: -0.5px;
+                }
+                &-price {
+                    color: $gray-cool;
+                }
+            }
+            .trial {
+                color: $blue-marine;
+                font-weight: 500;
+                grid-area: 2/2;
+            }
         }
-        &-price {
-          color: $gray-cool;
+        .billing {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: $bg-gray;
+            border-radius: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            .color-marine {
+                color: $blue-marine;
+            }
+            .color-gray {
+                color: $gray-cool;
+            }
         }
-      }
-      .trial {
-        color: $blue-marine;
-        font-weight: 500;
-      }
     }
-    .billing {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      background: $bg-gray;
-      border-radius: 0.5rem;
-      font-size: 1.5rem;
-      font-weight: 500;
-      .color-marine {
-        color: $blue-marine;
-      }
-      .color-gray {
-        color: $gray-cool;
-      }
+    .footer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 1rem 1rem 1rem;
+        .back {
+            color: $gray-cool;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        .next {
+            background-color: $blue-marine;
+            color: $white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            cursor: pointer;
+        }
     }
-  }
-  .footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 1rem 1rem 1rem;
-    .back {
-      color: $gray-cool;
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
-    .next {
-      background-color: $blue-marine;
-      color: $white;
-      border: none;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      cursor: pointer;
-    }
-  }
 }
 .subscriptionChoosen {
-  background-color: $bg-gray;
+    background-color: $bg-gray;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 }
