@@ -11,7 +11,6 @@
             </div>
             <input
                 #nameInput
-                (focus)="onFocus(nameInput)"
                 formControlName="name"
                 type="text"
                 id="name"
@@ -35,7 +34,6 @@
             </div>
             <input
                 #emailInput
-                (focus)="onFocus(emailInput)"
                 formControlName="email"
                 type="text"
                 id="email"
@@ -59,7 +57,6 @@
             </div>
             <input
                 #numberInput
-                (focus)="onFocus(numberInput)"
                 formControlName="number"
                 type="text"
                 id="number"
@@ -73,7 +70,7 @@
                 />{{
                     numberInput.value === ''
                         ? 'This fiel is required'
-                        : 'ivalidNumber.Please enter a number with a total length of 9 characters.'
+                        : 'ivalidNumber.Please enter only numbers.'
                 }}</span
             >
         </div>

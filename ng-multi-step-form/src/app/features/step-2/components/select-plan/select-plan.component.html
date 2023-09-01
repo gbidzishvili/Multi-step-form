@@ -21,20 +21,32 @@
                                 {{ item.header }}
                             </div>
                             <div class="subscription-data-price">
-                                {{ item.price }}
+                                {{
+                                    toggleClicked === false
+                                        ? item.price
+                                        : item.priceYearly
+                                }}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="trial" *ngIf="clicked">{{ item.trial }}</div>
+                <div class="trial" *ngIf="toggleClicked">{{ item.trial }}</div>
             </div>
         </div>
         <div class="billing">
-            <span [ngClass]="{ 'blue-marine': !clicked, 'color-gray': clicked }"
+            <span
+                [ngClass]="{
+                    'blue-marine': !toggleClicked,
+                    'color-gray': toggleClicked
+                }"
                 >Monthly</span
             >
             <app-toggle (toggleEmitter)="changeToggle($event)"></app-toggle>
-            <span [ngClass]="{ 'blue-marine': clicked, 'color-gray': !clicked }"
+            <span
+                [ngClass]="{
+                    'blue-marine': toggleClicked,
+                    'color-gray': !toggleClicked
+                }"
                 >Yearly</span
             >
         </div>

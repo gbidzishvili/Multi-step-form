@@ -12,6 +12,7 @@ import { ToggleComponent } from './features/step-2/components/toggle/toggle.comp
 import { AddOnsComponent } from './features/step-3/components/add-ons/add-ons.component';
 import { FinishingComponent } from './features/step-4/components/finishing/finishing.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ThanksComponent } from './features/step-5/components/thanks/thanks.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
         ToggleComponent,
         AddOnsComponent,
         FinishingComponent,
+        ThanksComponent,
     ],
     imports: [
         BrowserModule,

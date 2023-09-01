@@ -1,6 +1,45 @@
-<div class="container">
-    <div class="title">Finishing up</div>
-    <div class="title-small">
-        Double-chek everything look OK before confirming
+<section class="container">
+    <header>
+        <div class="title">Finishing up</div>
+        <div class="title-small">
+            Double-chek everything look OK before confirming
+        </div>
+    </header>
+    <section class="pricing-table">
+        <div class="pricing-table-header">
+            <div class="data">
+                <div class="subscription">
+                    {{ choosenSubscription.header
+                    }}<span>({{ toggleClicked ? 'Yearly' : 'Monthly' }})</span>
+                </div>
+                <a class="change" routerLink="/step-2">Change</a>
+            </div>
+            <div class="price">
+                {{
+                    toggleClicked
+                        ? choosenSubscription.priceYearly
+                        : choosenSubscription.price
+                }}
+            </div>
+        </div>
+        <div class="pricing-table-body">
+            <div class="add-on" *ngFor="let i of choosenAddons">
+                <span class="add-on-text">{{ i.header }}</span>
+                <span class="add-on-price">{{
+                    toggleClicked ? i.priceYearly : i.price
+                }}</span>
+            </div>
+        </div>
+    </section>
+    <div class="total">
+        <span
+            >Total (per <span>{{ toggleClicked ? 'year' : 'month' }}</span
+            >)
+        </span>
+        <span class="total-price">{{ totalPrice }}</span>
     </div>
-</div>
+    <div class="footer">
+        <button type="button" class="back" (click)="back()">Go Back</button>
+        <button type="button" class="next" (click)="confirm()">confirm</button>
+    </div>
+</section>

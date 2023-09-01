@@ -6,13 +6,17 @@ import { BehaviorSubject } from 'rxjs';
     providedIn: 'root',
 })
 export class PaginationService {
-    currentPage = new BehaviorSubject(1);
+    currentPage = new BehaviorSubject(+sessionStorage.getItem('currentPage'));
+    suffix$ = new BehaviorSubject('');
+    
     constructor(public router: Router, public route: ActivatedRoute) {}
-    paginate(page: number) {
-        this.router.navigate([`step-${page}`]);
-        localStorage.setItem('currentPage', `${page}`);
-        let currPage = +localStorage.getItem('currentPage');
+    paginate(page: number, suffixVal: string = '') {
+        if (this.suffix$) {
+            this.suffix$.next(suffixVal);
+        }
+        this.router.navigate([`step-${page}${suffixVal}`]);
+        sessionStorage.setItem('currentPage', `${page}`);
+        let currPage = +sessionStorage.getItem('currentPage');
         this.currentPage.next(currPage);
-        
     }
 }

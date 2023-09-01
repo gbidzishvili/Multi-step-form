@@ -5,6 +5,7 @@ import { PersonalInfoComponent } from './features/step-1/components/personal-inf
 import { SelectPlanComponent } from './features/step-2/components/select-plan/select-plan.component';
 import { AddOnsComponent } from './features/step-3/components/add-ons/add-ons.component';
 import { FinishingComponent } from './features/step-4/components/finishing/finishing.component';
+import { ThanksComponent } from './features/step-5/components/thanks/thanks.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'step-1', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
     { path: 'step-2', component: SelectPlanComponent },
     { path: 'step-3', component: AddOnsComponent },
     { path: 'step-4', component: FinishingComponent },
+    { path: 'step-4-thanks', component: ThanksComponent },
 ];
 
 @NgModule({

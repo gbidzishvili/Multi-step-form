@@ -10,47 +10,56 @@ import { PaginationService } from 'src/app/shared/services/pagination-service.se
     styleUrls: ['./select-plan.component.scss'],
 })
 export class SelectPlanComponent {
-    clicked = false;
+    toggleClicked = false;
     subscriptionChoosen = sessionStorage.getItem('subscription');
     data;
+    currentPage;
+    price;
     constructor(
-        public router: Router,
         public paginationService: PaginationService,
-        public route: ActivatedRoute,
-        public shareDataService: DataShearingService,
+        public dataShearingService: DataShearingService,
         public http: HttpClient
     ) {}
 
     ngOnInit() {
-        this.shareDataService.toggleValue.subscribe((v) => {
-            this.clicked = v;
+        this.dataShearingService.toggleValue.subscribe((v) => {
+            this.toggleClicked = v;
         });
         this.http.get('../../../../assets/data/plans.json').subscribe((v) => {
             this.data = v;
             console.log('Data is', this.data);
         });
+        this.paginationService.currentPage.subscribe((v) => {
+            this.currentPage = v;
+        });
     }
     changeToggle(value) {
-        console.log('select', value);
-        this.clicked = value;
-        this.shareDataService.toggleValue.next(value);
+        this.dataShearingService.toggleValue.next(value);
     }
     back() {
-        this.paginationService.paginate(1);
+        this.paginationService.paginate(this.currentPage - 1);
     }
     next() {
-        this.paginationService.paginate(3);
+        if (this.subscriptionChoosen !== null) {
+            this.paginationService.paginate(this.currentPage + 1);
+        } else {
+            alert('You should choose subscription.');
+        }
     }
     chooseSubscription(val) {
+        if (!this.toggleClicked) {
+            this.price = this.data[val]['price'];
+        } else {
+            this.price = this.data[val]['priceYearly'];
+        }
         sessionStorage.setItem('subscription', `${val}`);
-        sessionStorage.getItem('subscription');
+        sessionStorage.setItem('subObj', JSON.stringify(this.data[val]));
         this.subscriptionChoosen =
             this.subscriptionChoosen === sessionStorage.getItem('subscription')
                 ? null
                 : sessionStorage.getItem('subscription');
-        console.log(
-            this.subscriptionChoosen,
-            sessionStorage.getItem('subscription')
-        );
+        this.subscriptionChoosen === null
+            ? this.dataShearingService.choosenSubscription.next(null)
+            : this.dataShearingService.choosenSubscription.next(this.data[val]);
     }
 }

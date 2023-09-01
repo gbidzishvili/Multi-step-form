@@ -2,8 +2,7 @@
     <button
         *ngFor="let i of pages"
         (click)="changePage(i)"
-        routerLinkActive="active"
-        [routerLink]="'step-' + i"
+        [ngClass]="{ active: currentPage == i }"
     >
         <span> {{ i }}</span>
     </button>
