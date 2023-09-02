@@ -23,8 +23,8 @@
                             <div class="subscription-data-price">
                                 {{
                                     toggleClicked === false
-                                        ? item.price
-                                        : item.priceYearly
+                                        ? '$' + item.price + '/mo'
+                                        : '$' + item.priceYearly + '/yr'
                                 }}
                             </div>
                         </div>

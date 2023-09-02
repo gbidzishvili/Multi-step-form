@@ -22,12 +22,26 @@ export class SelectPlanComponent {
     ) {}
 
     ngOnInit() {
+        //  if (this.subscriptionChoosen === null) {
+        //      sessionStorage.setItem('subscription', null);
+        //      this.dataShearingService.choosenSubscription.next(null);
+        //  } else {
+        //      sessionStorage.setItem('subscription', this.data[val]);
+        //      this.dataShearingService.choosenSubscription.next(this.data[val]);
+        //  }
+
+        //  this.dataShearingService.choosenSubscription.next(this.data[val]);
+
         this.dataShearingService.toggleValue.subscribe((v) => {
             this.toggleClicked = v;
         });
         this.http.get('../../../../assets/data/plans.json').subscribe((v) => {
             this.data = v;
-            console.log('Data is', this.data);
+            this.subscriptionChoosen = sessionStorage.getItem('subscription');
+            this.dataShearingService.choosenSubscription.next(
+                this.data[this.subscriptionChoosen]
+            );
+            console.log('ngOnInit', this.data[this.subscriptionChoosen]);
         });
         this.paginationService.currentPage.subscribe((v) => {
             this.currentPage = v;
@@ -61,5 +75,6 @@ export class SelectPlanComponent {
         this.subscriptionChoosen === null
             ? this.dataShearingService.choosenSubscription.next(null)
             : this.dataShearingService.choosenSubscription.next(this.data[val]);
+        console.log('chooseSubscriptionMethod', this.data[val]);
     }
 }

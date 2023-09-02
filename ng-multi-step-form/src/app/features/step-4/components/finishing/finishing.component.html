@@ -17,8 +17,8 @@
             <div class="price">
                 {{
                     toggleClicked
-                        ? choosenSubscription.priceYearly
-                        : choosenSubscription.price
+                        ? '$' + choosenSubscription.priceYearly + '/yr'
+                        : '$' + choosenSubscription.price + '/mo'
                 }}
             </div>
         </div>
@@ -26,7 +26,9 @@
             <div class="add-on" *ngFor="let i of choosenAddons">
                 <span class="add-on-text">{{ i.header }}</span>
                 <span class="add-on-price">{{
-                    toggleClicked ? i.priceYearly : i.price
+                    toggleClicked
+                        ? '+$' + i.priceYearly + '/yr'
+                        : '+$' + i.price + '/mo'
                 }}</span>
             </div>
         </div>

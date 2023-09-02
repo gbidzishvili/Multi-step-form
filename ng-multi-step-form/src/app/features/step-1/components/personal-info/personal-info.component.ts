@@ -32,8 +32,11 @@ export class PersonalInfoComponent {
         public dataShearingService: DataShearingService
     ) {}
     ngOnInit() {
+        // if (sessionStorage.getItem('name') !== null)
         this.infoForm.get('name').setValue(sessionStorage.getItem('name'));
+        // if (sessionStorage.getItem('email') !== null)
         this.infoForm.get('email').setValue(sessionStorage.getItem('email'));
+        // if (sessionStorage.getItem('number') !== null)
         this.infoForm.get('number').setValue(sessionStorage.getItem('number'));
         this.dataShearingService.navigated.subscribe((v) => {
             this.navigated = v;
