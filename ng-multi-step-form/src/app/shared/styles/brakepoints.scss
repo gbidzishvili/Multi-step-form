@@ -1,0 +1,20 @@
+$brakPoints: (
+    'small': '375px',
+    'medium': '768px',
+    'large': '1440px',
+);
+$brakPoints-down: (
+    'small': '374px',
+    'medium': '767px',
+    'large': '1439px',
+);
+@mixin brakePoint-up($size) {
+    @media (min-width: map-get($brakPoints,$size)) {
+        @content;
+    }
+}
+@mixin brakePoint-down($size) {
+    @media (max-width: map-get($brakPoints-down,$size)) {
+        @content;
+    }
+}

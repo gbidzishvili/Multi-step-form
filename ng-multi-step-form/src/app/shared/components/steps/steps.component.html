@@ -1,9 +1,12 @@
 <div class="buttons">
-    <button
-        *ngFor="let i of pages"
-        (click)="changePage(i)"
-        [ngClass]="{ active: currentPage == i }"
-    >
-        <span> {{ i }}</span>
-    </button>
+    <div class="info-cont" *ngFor="let i of pages">
+        <button
+            (click)="changePage(i)"
+            [ngClass]="{ active: currentPage == i.idx }"
+        >
+            <span> {{ i.idx }}</span>
+        </button>
+        <div class="step">{{ i.step }}</div>
+        <div class="info">{{ i.info }}</div>
+    </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { PaginationService } from '../../services/pagination-service.service';
 import { DataShearingService } from '../../services/data-shearing.service';
 
@@ -8,11 +8,17 @@ import { DataShearingService } from '../../services/data-shearing.service';
     styleUrls: ['./steps.component.scss'],
 })
 export class StepsComponent {
-    pages = [1, 2, 3, 4];
+    pages = [
+        { idx: 1, step: 'STEP1', info: 'YOUR INFO' },
+        { idx: 2, step: 'STEP2', info: 'SELECT PLAN' },
+        { idx: 3, step: 'STEP3', info: 'ADD-ONS' },
+        { idx: 4, step: 'STEP4', info: 'SUMMARY' },
+    ];
     suffix = '';
     currentPage;
     choosenSubscription;
     form;
+    isBiggerThan768px;
     constructor(
         public paginationService: PaginationService,
         public dataSharingService: DataShearingService

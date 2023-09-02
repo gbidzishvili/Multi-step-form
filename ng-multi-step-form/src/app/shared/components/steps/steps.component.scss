@@ -3,8 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    height: 15vh;
+    gap: 2rem;
     position: relative;
     z-index: 1;
     button {
@@ -18,6 +17,15 @@
         &.active {
             background-color: $magnolia;
             color: $blue-marine;
+        }
+    }
+}
+@include brakePoint-up('medium') {
+    .buttons {
+        flex-direction: column;
+        button {
+            width: 3rem;
+            height: 3rem;
         }
     }
 }
