@@ -48,17 +48,19 @@ export class FinishingComponent {
         //     );
         // }
         // if (v) {
-        if (this.choosenSubscription['price'].length > 5) {
-            count += +this.choosenSubscription['price'].substr(-5, 2);
+        if (this.toggleClicked) {
+            count += +this.choosenSubscription['priceYearly'];
             console.log(
                 'sub price 1',
-                this.choosenSubscription['price'].substr(-5, 2)
+                this.choosenSubscription['priceYearly'],
+                count
             );
         } else {
-            count += +this.choosenSubscription['price'].substr(-4, 1);
+            count += +this.choosenSubscription['price'];
             console.log(
                 'sub price 2',
-                this.choosenSubscription['price'].substr(-4, 1)
+                this.choosenSubscription['price'],
+                count
             );
         }
         // }
@@ -71,12 +73,12 @@ export class FinishingComponent {
                 }
             }
             this.choosenAddons.forEach((v) => {
-                if (this.toggleClicked) {
-                    count += +v['price'].substr(-5, 2);
-                    // console.log(thiscount, 'sum 1');
+                if (!this.toggleClicked) {
+                    count += +v['price'];
+                    console.log(count, 'sum 1');
                 } else {
-                    count += +v['priceYearly'].substr(-5, 1);
-                    // console.log(thiscount, 'sum 2');
+                    count += +v['priceYearly'];
+                    console.log(count, 'sum 2');
                 }
             });
             this.totalPrice = '+$' + count + '/mo';
