@@ -23,9 +23,20 @@
 @include brakePoint-up('medium') {
     .buttons {
         flex-direction: column;
-        button {
-            width: 3rem;
-            height: 3rem;
+        .info-cont {
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+            button {
+                width: 3rem;
+                height: 3rem;
+            }
+            .step {
+                color: $gray-cool;
+            }
+            .info {
+                color: $white;
+            }
         }
     }
 }

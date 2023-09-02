@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { PaginationService } from '../../services/pagination-service.service';
 import { DataShearingService } from '../../services/data-shearing.service';
 
@@ -18,7 +18,7 @@ export class StepsComponent {
     currentPage;
     choosenSubscription;
     form;
-    isBiggerThan768px;
+    isBiggerThan767px = window.innerWidth > 767;
     constructor(
         public paginationService: PaginationService,
         public dataSharingService: DataShearingService
@@ -41,6 +41,11 @@ export class StepsComponent {
             console.log('steps form: ', v);
             this.form = v;
         });
+    }
+    @HostListener('window:resize', ['$event'])
+    onResize(event?) {
+        this.isBiggerThan767px = window.innerWidth > 767;
+        console.log(this.isBiggerThan767px);
     }
     changePage(page: number) {
         if (page !== this.currentPage) {
