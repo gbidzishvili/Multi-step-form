@@ -1,12 +1,12 @@
 @use '../../styles/shared.scss' as *;
 @include brakePoint-down('medium') {
     .container {
-        width: 375px;
+        width: 100%;
         margin: 0 auto;
         position: relative;
         height: 100vh;
         background-color: $magnolia;
-        .inner-cont {
+        .desktop {
             display: none;
         }
     }
@@ -19,6 +19,8 @@
         top: 0;
         left: 0;
         width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
         height: 20vh;
     }
 }
@@ -34,21 +36,29 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            gap: 3rem;
+            // gap: 3rem;
             width: 80%;
             background-color: $white;
             padding: 1rem;
+            .mobile {
+                display: none;
+            }
         }
     }
-    .background {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        background: url(../../../../assets/images/bg-sidebar-desktop.svg);
-        padding: 2rem;
-        min-width: 22rem;
-        height: 47rem;
-        max-width: fit-content;
-        border-radius: 1rem;
+    .desktop {
+        // width: 32%;
+        .background {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            background: url(../../../../assets/images/bg-sidebar-desktop.svg);
+            padding: 2rem;
+            min-width: 22rem;
+            // width: 100%;
+            // background-size: cover;
+            // background-repeat: no-repeat;
+            height: 47rem;
+            border-radius: 1rem;
+        }
     }
 }

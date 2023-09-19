@@ -1,9 +1,14 @@
 <div class="container">
     <div class="inner-cont">
-        <div class="background">
+        <div class="mobile">
             <app-steps></app-steps>
+            <div class="background"></div>
         </div>
-        <!-- <app-steps></app-steps> -->
+        <div class="desktop">
+            <div class="background">
+                <app-steps></app-steps>
+            </div>
+        </div>
         <router-outlet></router-outlet>
     </div>
 </div>
