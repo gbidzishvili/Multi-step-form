@@ -24,6 +24,7 @@
                 padding: 1rem;
                 transition: max-height 0.3s ease-in-out;
                 width: 100%;
+                cursor: pointer;
                 .flex-inner-container {
                     display: flex;
                     gap: 1rem;
@@ -54,9 +55,6 @@
         .addOnnChoosen {
             background-color: $bg-gray;
             display: grid;
-            // width: 30%;
-            // grid-template-columns: 1fr 1fr;
-            // grid-template-rows: 1fr 1fr;
             border: 1px solid $red;
         }
         .billing {

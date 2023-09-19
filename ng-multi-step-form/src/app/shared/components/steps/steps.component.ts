@@ -16,9 +16,8 @@ export class StepsComponent {
     ];
     suffix = '';
     currentPage;
-    choosenSubscription;
+    choosenSubscription = null;
     form;
-    // isBiggerThan767px = window.innerWidth > 767;
     constructor(
         public paginationService: PaginationService,
         public dataSharingService: DataShearingService
@@ -43,21 +42,26 @@ export class StepsComponent {
         });
     }
     changePage(page) {
-        console.log('page is:', page.idx);
         page = page.idx;
-        if (page !== this.currentPage) {
-            if (this.currentPage === 1 && !this.form.valid) {
-                this.dataSharingService.navigated.next(true);
-                alert('You should fill the form first');
-            } else if (
-                this.currentPage === 2 &&
-                this.choosenSubscription === null &&
-                page > this.currentPage
-            ) {
-                alert('You should choose subscription');
-            } else {
-                this.paginationService.paginate(page);
-            }
+        if (this.currentPage === 1 && !this.form.valid) {
+            this.dataSharingService.navigated.next(true);
+            alert('You should fill the form first');
+        } else if (
+            this.currentPage === 1 &&
+            (this.choosenSubscription === undefined ||
+                sessionStorage.getItem('subscription') === 'null') &&
+            page > 2
+        ) {
+            alert('You should choose subscription on second page');
+        } else if (
+            this.currentPage === 2 &&
+            (this.choosenSubscription === undefined ||
+                sessionStorage.getItem('subscription') === 'null') &&
+            page > this.currentPage
+        ) {
+            alert('You should choose subscription');
+        } else {
+            this.paginationService.paginate(page);
         }
     }
 }

@@ -9,8 +9,15 @@ import { ThanksComponent } from './features/step-5/components/thanks/thanks.comp
 
 const routes: Routes = [
     { path: '', redirectTo: 'step-1', pathMatch: 'full' },
-    { path: 'step-1', component: PersonalInfoComponent },
-    { path: 'step-2', component: SelectPlanComponent },
+    {
+        path: 'step-1',
+        component: PersonalInfoComponent,
+    },
+    {
+        path: 'step-2',
+        component: SelectPlanComponent,
+    },
+
     { path: 'step-3', component: AddOnsComponent },
     { path: 'step-4', component: FinishingComponent },
     { path: 'step-4-thanks', component: ThanksComponent },

@@ -37,7 +37,6 @@ export class AddOnsComponent {
         this.addOnnChoosenArr[v] = !this.addOnnChoosenArr[v];
         sessionStorage.setItem('arr', JSON.stringify(this.addOnnChoosenArr));
         this.addOnnChoosenArr = JSON.parse(sessionStorage.getItem('arr'));
-        console.log(JSON.parse(sessionStorage.getItem('arr')));
     }
     back() {
         this.paginationService.paginate(this.currentPage - 1);

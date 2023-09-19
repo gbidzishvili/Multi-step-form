@@ -1,7 +1,6 @@
 import { JsonPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { DataShearingService } from 'src/app/shared/services/data-shearing.service';
 import { PaginationService } from 'src/app/shared/services/pagination-service.service';
 
@@ -22,11 +21,9 @@ export class FinishingComponent {
     constructor(
         public dataShearingService: DataShearingService,
         public http: HttpClient,
-        public paginationService: PaginationService,
-        public router: Router
+        public paginationService: PaginationService
     ) {}
     ngOnInit() {
-        console.log('subObj', this.subscription);
         this.http.get('../../../../assets/data/plans.json').subscribe((v) => {
             this.data = v;
         });
@@ -34,55 +31,29 @@ export class FinishingComponent {
             this.toggleClicked = v;
         });
         this.paginationService.currentPage.subscribe((v) => {
-            console.log('currentPage:', v);
             this.currentPage = v;
         });
         let count = 0;
-        // this.subscription =
-        // this.dataShearingService.choosenSubscription.subscribe((v) => {
-        // if (v) {
-        //     this.choosenSubscription = v;
-        // } else {
-        //     this.choosenSubscription = JSON.parse(
-        //         sessionStorage.getItem('subObj')
-        //     );
-        // }
-        // if (v) {
         if (this.toggleClicked) {
             count += +this.choosenSubscription['priceYearly'];
-            console.log(
-                'sub price 1',
-                this.choosenSubscription['priceYearly'],
-                count
-            );
         } else {
             count += +this.choosenSubscription['price'];
-            console.log(
-                'sub price 2',
-                this.choosenSubscription['price'],
-                count
-            );
         }
-        // }
-        // });
         this.http.get('../../../../assets/data/add-ons.json').subscribe((v) => {
-            console.log('value is: ', v);
-            for (let i in v) {
-                if (this.addOnnChoosenArr[i]) {
-                    this.choosenAddons.push(v[i]);
+            if (this.addOnnChoosenArr)
+                for (let i in v) {
+                    if (this.addOnnChoosenArr[i]) {
+                        this.choosenAddons.push(v[i]);
+                    }
                 }
-            }
             this.choosenAddons.forEach((v) => {
                 if (!this.toggleClicked) {
                     count += +v['price'];
-                    console.log(count, 'sum 1');
                 } else {
                     count += +v['priceYearly'];
-                    console.log(count, 'sum 2');
                 }
             });
             this.totalPrice = '+$' + count + '/mo';
-            console.log(this.totalPrice, '  totalPrice');
         });
     }
 
@@ -91,8 +62,5 @@ export class FinishingComponent {
     }
     confirm() {
         this.paginationService.paginate(this.currentPage, '-thanks');
-    }
-    ngOnDestroy() {
-        // this.subscription.unsubscribe();
     }
 }

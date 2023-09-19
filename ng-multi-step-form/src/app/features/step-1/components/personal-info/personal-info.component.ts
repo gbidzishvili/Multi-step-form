@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { DataShearingService } from 'src/app/shared/services/data-shearing.service';
 import { PaginationService } from 'src/app/shared/services/pagination-service.service';
 
@@ -9,13 +9,14 @@ import { PaginationService } from 'src/app/shared/services/pagination-service.se
     templateUrl: './personal-info.component.html',
     styleUrls: ['./personal-info.component.scss'],
 })
-export class PersonalInfoComponent {
+export class PersonalInfoComponent implements OnDestroy {
     invalidName = false;
     invalidEmail = false;
     invalidNumber = false;
     submitted = new Subject();
     currentPage;
     navigated;
+    subscription = new Subscription();
     infoForm = new FormGroup({
         name: new FormControl('', [
             Validators.required,
@@ -32,11 +33,8 @@ export class PersonalInfoComponent {
         public dataShearingService: DataShearingService
     ) {}
     ngOnInit() {
-        // if (sessionStorage.getItem('name') !== null)
         this.infoForm.get('name').setValue(sessionStorage.getItem('name'));
-        // if (sessionStorage.getItem('email') !== null)
         this.infoForm.get('email').setValue(sessionStorage.getItem('email'));
-        // if (sessionStorage.getItem('number') !== null)
         this.infoForm.get('number').setValue(sessionStorage.getItem('number'));
         this.dataShearingService.navigated.subscribe((v) => {
             this.navigated = v;
@@ -45,11 +43,10 @@ export class PersonalInfoComponent {
             }
         });
         this.dataShearingService.form.next(this.infoForm);
-        this.infoForm.valueChanges.subscribe((v) => {
+        this.subscription = this.infoForm.valueChanges.subscribe((v) => {
             sessionStorage.setItem('name', this.infoForm.get('name').value);
             sessionStorage.setItem('email', this.infoForm.get('email').value);
             sessionStorage.setItem('number', this.infoForm.get('number').value);
-            this.infoForm.get('name').setValue(sessionStorage.getItem('name'));
             if (this.navigated) {
                 this.validateForm();
             }
@@ -78,11 +75,16 @@ export class PersonalInfoComponent {
         this.submitted.next(true);
         if (this.infoForm.valid) {
             this.paginationService.paginate(2);
+        } else {
+            alert('You should fill the form first');
         }
     }
     validateForm() {
         this.invalidName = this.infoForm.get('name').invalid;
         this.invalidEmail = this.infoForm.get('email').invalid;
         this.invalidNumber = this.infoForm.get('number').invalid;
+    }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -8,8 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 export class PaginationService {
     currentPage = new BehaviorSubject(+sessionStorage.getItem('currentPage'));
     suffix$ = new BehaviorSubject('');
-    
-    constructor(public router: Router, public route: ActivatedRoute) {}
+
+    constructor(public router: Router) {}
     paginate(page: number, suffixVal: string = '') {
         if (this.suffix$) {
             this.suffix$.next(suffixVal);
