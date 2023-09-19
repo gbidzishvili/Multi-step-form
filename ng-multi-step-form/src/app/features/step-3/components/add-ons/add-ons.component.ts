@@ -10,7 +10,7 @@ import { PaginationService } from 'src/app/shared/services/pagination-service.se
 })
 export class AddOnsComponent {
     addOnnChoosenArr = JSON.parse(sessionStorage.getItem('arr'));
-    toggleClicked;
+    toggleClicked = false;
     data;
     currentPage;
     constructor(
@@ -24,7 +24,7 @@ export class AddOnsComponent {
             this.addOnnChoosenArr = [false, false, false];
         }
         this.dataShearingService.toggleValue.subscribe((v) => {
-            this.toggleClicked = v;
+            if (v) this.toggleClicked = v;
         });
         this.http.get('../../../assets/data/add-ons.json').subscribe((v) => {
             this.data = v;

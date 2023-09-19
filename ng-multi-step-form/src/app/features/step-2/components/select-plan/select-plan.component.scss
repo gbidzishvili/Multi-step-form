@@ -100,4 +100,15 @@
         }
     }
 }
-
+@include brakePoint-up('medium') {
+    :host {
+        width: 100%;
+    }
+    .container {
+        box-shadow: none;
+        gap: 0.8rem;
+        .subscriptions {
+            gap: 1.2rem;
+        }
+    }
+}

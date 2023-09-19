@@ -18,7 +18,7 @@ export class StepsComponent {
     currentPage;
     choosenSubscription;
     form;
-    isBiggerThan767px = window.innerWidth > 767;
+    // isBiggerThan767px = window.innerWidth > 767;
     constructor(
         public paginationService: PaginationService,
         public dataSharingService: DataShearingService
@@ -42,22 +42,19 @@ export class StepsComponent {
             this.form = v;
         });
     }
-    @HostListener('window:resize', ['$event'])
-    onResize(event?) {
-        this.isBiggerThan767px = window.innerWidth > 767;
-        console.log(this.isBiggerThan767px);
-    }
-    changePage(page: number) {
+    changePage(page) {
+        console.log('page is:', page.idx);
+        page = page.idx;
         if (page !== this.currentPage) {
-            if (
+            if (this.currentPage === 1 && !this.form.valid) {
+                this.dataSharingService.navigated.next(true);
+                alert('You should fill the form first');
+            } else if (
                 this.currentPage === 2 &&
                 this.choosenSubscription === null &&
                 page > this.currentPage
             ) {
                 alert('You should choose subscription');
-            } else if (this.currentPage === 1 && !this.form.valid) {
-                this.dataSharingService.navigated.next(true);
-                alert('You should fill the form first');
             } else {
                 this.paginationService.paginate(page);
             }

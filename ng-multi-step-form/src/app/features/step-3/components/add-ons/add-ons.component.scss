@@ -100,3 +100,15 @@
     }
 }
 
+@include brakePoint-up('medium') {
+    :host {
+        width: 100%;
+    }
+    .container {
+        box-shadow: none;
+        gap: 1.2rem;
+        .addOnns {
+            gap: 2.3rem;
+        }
+    }
+}

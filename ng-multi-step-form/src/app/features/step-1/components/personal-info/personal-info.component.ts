@@ -65,9 +65,6 @@ export class PersonalInfoComponent {
                 });
                 this.infoForm.get('number').valueChanges.subscribe((v) => {
                     this.invalidNumber = this.infoForm.get('number').invalid;
-                    if (v.split(/\s+/).join('').length !== 9) {
-                        this.invalidNumber = true;
-                    }
                 });
             }
         });

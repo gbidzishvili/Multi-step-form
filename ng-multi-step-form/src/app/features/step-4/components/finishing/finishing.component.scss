@@ -92,3 +92,18 @@
         }
     }
 }
+@include brakePoint-up('medium') {
+    :host {
+        width: 100%;
+    }
+    .container {
+        box-shadow: none;
+        gap: 1.5rem;
+        .pricing-table {
+            gap: 2rem;
+            &-body {
+                gap: 2rem;
+            }
+        }
+    }
+}

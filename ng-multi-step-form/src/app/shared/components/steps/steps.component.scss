@@ -19,6 +19,12 @@
             color: $blue-marine;
         }
     }
+    .step {
+        display: none;
+    }
+    .info {
+        display: none;
+    }
 }
 @include brakePoint-up('medium') {
     .buttons {
@@ -33,9 +39,11 @@
             }
             .step {
                 color: $gray-cool;
+                display: block;
             }
             .info {
                 color: $white;
+                display: block;
             }
         }
     }

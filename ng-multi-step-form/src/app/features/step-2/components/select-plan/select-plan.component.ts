@@ -33,7 +33,7 @@ export class SelectPlanComponent {
         //  this.dataShearingService.choosenSubscription.next(this.data[val]);
 
         this.dataShearingService.toggleValue.subscribe((v) => {
-            this.toggleClicked = v;
+            if (v) this.toggleClicked = v;
         });
         this.http.get('../../../../assets/data/plans.json').subscribe((v) => {
             this.data = v;
