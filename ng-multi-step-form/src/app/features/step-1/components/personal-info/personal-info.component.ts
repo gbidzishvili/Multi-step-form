@@ -20,7 +20,7 @@ export class PersonalInfoComponent implements OnDestroy {
     infoForm = new FormGroup({
         name: new FormControl('', [
             Validators.required,
-            Validators.pattern('^[a-w|\\s]*$'),
+            Validators.pattern('[A-Wa-w\\s]*'),
         ]),
         email: new FormControl('', [Validators.required, Validators.email]),
         number: new FormControl('', [
